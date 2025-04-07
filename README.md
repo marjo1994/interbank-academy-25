@@ -8,7 +8,8 @@ Este reto técnico consiste en el procesamiento automatizado de transacciones ba
 2. **ID y monto** de la transacción con el mayor valor.
 3. **Conteo total** de transacciones de tipo *Crédito* y *Débito*.
 
-Además, la herramienta permite identificar e imprimir las transacciones inválidas según un sistema de validación robusto. El reporte se puede almacenar en un archivo `.txt` ubicado en la carpeta `output`, lo que facilita la auditoría y el control de calidad de los datos procesados.
+Además, la herramienta permite identificar e imprimir las transacciones inválidas según un sistema de validación robusto. El reporte se puede almacenar en un archivo `.txt` ubicado en la carpeta \`output\`, lo que facilita la auditoría y el control de calidad de los datos procesados.
+
 ---
 
 ## Instrucciones de Ejecución  
