@@ -112,7 +112,13 @@ def main():
                 
                 with open(ruta_salida, 'w', encoding='utf-8') as f:
                     f.write(resultado_formateado)
-                
+
+                    # Añadir errores al reporte solo si se especificó mostrar_errores
+                    if args.mostrar_errores and resultado.errores:
+                            f.write(f"\n\nErrores de validación ({len(resultado.errores)}):\n")
+                            for error in resultado.errores:
+                                f.write(f" • {error}\n")
+
                 print(f"\nReporte guardado en: {ruta_salida}")
         
     except Exception as e:
