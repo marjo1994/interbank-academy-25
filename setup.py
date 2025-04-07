@@ -1,11 +1,11 @@
 from setuptools import setup, find_packages
 from pathlib import Path
 
-# Lee requirements.txt
-requirements = (Path(__file__).parent / 'requirements.txt').read_text().splitlines()
+# Lee requirements.txt con codificación UTF-8
+requirements = (Path(__file__).parent / 'requirements.txt').read_text(encoding="utf-8").splitlines()
 
-# Lee README para la descripción larga
-readme = (Path(__file__).parent / "README.md").read_text()
+# Lee README.md con codificación UTF-8
+readme = (Path(__file__).parent / "README.md").read_text(encoding="utf-8")
 
 setup(
     name="Análisis de transacciones bancarias",
@@ -15,11 +15,7 @@ setup(
     install_requires=requirements,
     python_requires=">=3.10",
     
-    # Archivos de datos (incluye input si es necesario)
-    package_data={
-        "": ["*.csv", "*.txt"],  # Patrones de archivos a incluir
-    },
-    
+
     # Scripts ejecutables
     entry_points={
         "console_scripts": [
