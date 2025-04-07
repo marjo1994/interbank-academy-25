@@ -1,25 +1,38 @@
+from typing import List, Optional
+from dataclasses import dataclass
 from services.reporting import generar_reporte
 from services.validation import validar_data
-import os
+from models import ReporteTransaccion
 
-def main():
+@dataclass
+class ProcesamientoResultado:
+    reporte: Optional[ReporteTransaccion]
+    errores: List[str]
 
-    # Definimos la ruta de la data, utilizando os para compatibilidad con los sistemas
-    ruta_csv = os.path.join("../input", "data.csv")
+def ejecutar_procesamiento(ruta_csv: str) -> ProcesamientoResultado:
+    """
+    Función principal que incluye el procesamiento completo
     
+    Args:
+        ruta_csv: Ruta al archivo CSV de entrada
+        
+    Returns:
+        ProcesamientoResultado: Contiene el reporte y los errores
+    """
     try:
+        # Validación de datos
         transacciones_validas, errores = validar_data(ruta_csv)
-
-        if transacciones_validas:
-
-            reporte = generar_reporte(transacciones_validas)
-            print(f"Reporte: {reporte}");
-
-    except FileNotFoundError:
-        print(f"Error: No se encontró el archivo '{ruta_csv}'")
-
+        
+        # Si no hay transacciones válidas, retorna solo errores
+        if not transacciones_validas:
+            return ProcesamientoResultado(None, errores)
+        
+        # Generación del reporte
+        reporte = generar_reporte(transacciones_validas)
+        
+        # Retorno del resultado
+        return ProcesamientoResultado(reporte, errores)
+        
     except Exception as e:
-        print(f"Error inesperado: {str(e)}")
-
-if __name__ == "__main__":
-    main()
+        # Manejo de errores inesperados
+        return ProcesamientoResultado(None, [str(e)])
