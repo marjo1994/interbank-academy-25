@@ -42,6 +42,30 @@ Además, la herramienta permite identificar e imprimir las transacciones inváli
 
 **El archivo de salida se guarda automáticamente en la carpeta `output/`.**
 
+### Ejemplo de Salida
+
+```text
+Reporte de Transacciones
+------------------------------
+Balance Final: 10985.85
+Transacción de Mayor Monto: ID 222 - 499.69
+Conteo de Transacciones: Crédito: 508 Débito: 492
+```
+
+### Ejemplo de Salida con errores
+
+Se simula transacciones no válidas para mostrar errores:
+
+```text
+Errores de validación (2):
+ • Fila 1001 - monto: Input should be greater than 0
+ • Fila 1002 - tipo: Input should be 'Crédito' or 'Débito', monto: Input should be greater than 0
+Reporte de Transacciones
+------------------------------
+Balance Final: 10985.85
+Transacción de Mayor Monto: ID 222 - 499.69
+Conteo de Transacciones: Crédito: 508 Débito: 492
+```
 ---
 
 ## Enfoque y Solución
